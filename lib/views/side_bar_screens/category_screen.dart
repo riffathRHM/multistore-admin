@@ -1,5 +1,5 @@
 import 'dart:typed_data';
-
+import 'package:app_web/views/side_bar_screens/widgets/category_widget.dart';
 import 'package:app_web/controllers/category_controller.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -113,9 +113,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 TextButton(onPressed: () {}, child: Text('Cancel')),
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formkey.currentState!.validate()) {
-                       _categoryController.uploadCategory(pickedImage: _image, pickedBanner: _bannerImage, name:name , context: context);
+                      await _categoryController.uploadCategory(pickedImage: _image, pickedBanner: _bannerImage, name:name , context: context);
                       }
                     },
                     child: Text(
@@ -174,6 +174,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 color: Colors.grey,
               ),
             ),
+            CategoryWidget(),
           ],
         ),
       ),
